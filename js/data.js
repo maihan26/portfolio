@@ -19,7 +19,7 @@ const siteData = {
   title: "Han Nguyen",
   subtitle: "Geospatial Data for Good.<br>Remote Sensing and GIS for Social Impact.",
   buttons: [
-    { label: "View Portfolio", href: "portfolio.html", className: "button-1" },
+    { label: "View Portfolio", href: "#portfolio", className: "button-1" },
     { label: "Learn More", href: "#about", className: "button-2" },
   ],
 },
