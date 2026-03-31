@@ -3,8 +3,8 @@ const projects = [
     slug: "elk-creek",
     title: "Elk Creek Restoration Monitoring",
     subtitle: "GIS and remote sensing for stream and habitat change",
-    heroImage: "images/project-1.jpg",
-    thumbnail: "images/project-1-thumb.jpg",
+    heroImage: "images/elk-creek-restoration.jpg",
+    thumbnail: "images/elk-creek-restoration.jpg",
     category: "Geospatial analysis",
     year: "2026",
     overview:
@@ -13,7 +13,7 @@ const projects = [
       "Freshwater Conservation Canada needed a way to quantify early changes in stream condition and surrounding habitat.",
     role:
       "Spatial data analysis, remote sensing analysis, cartography, and communication of findings.",
-    tools: ["ArcGIS Pro", "Python", "Remote Sensing", "GIS", "Tableau"],
+    tools: ["ArcGIS Pro", "Python", "Remote Sensing", "GIS"],
     methods: [
       "Compared pre- and post-restoration imagery",
       "Measured stream sinuosity change",
@@ -26,15 +26,16 @@ const projects = [
       "Created visuals for technical and non-technical audiences"
     ],
     links: [
-      { label: "Back to Portfolio", href: "portfolio.html" }
+      { label: "Back to Portfolio", 
+        href: "https://canva.link/qfkxjexe5xiwgvx" }
     ]
   },
   {
     slug: "winter-olympics",
     title: "Winter Olympics Medal Strategy",
     subtitle: "Data analysis for sport opportunities and medal factors",
-    heroImage: "images/project-2.jpg",
-    thumbnail: "images/project-2-thumb.jpg",
+    heroImage: "images/winter-olympics-analysis.jpg",
+    thumbnail: "images/winter-olympics-analysis.jpg",
     category: "Data analytics",
     year: "2026",
     overview:
@@ -43,7 +44,7 @@ const projects = [
       "The goal was to identify patterns that could help countries like Canada allocate resources more strategically.",
     role:
       "Data cleaning, analysis, visualization, and storytelling.",
-    tools: ["Python", "Pandas", "Data Visualization", "Web Scraping"],
+    tools: ["Python", "Data Visualization", "Web Scraping"],
     methods: [
       "Collected and cleaned Olympic data",
       "Compared medal counts across sports and countries",
@@ -56,7 +57,8 @@ const projects = [
       "Created strategic insights relevant to Canada"
     ],
     links: [
-      { label: "Back to Portfolio", href: "portfolio.html" }
+      { label: "Back to Portfolio", 
+        href: "https://www.canva.com/design/DAHC7QTNNk0/MaUNFZzcupEjqZTMORtmVg/edit"}
     ]
   }
 ];
