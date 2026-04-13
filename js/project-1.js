@@ -34,7 +34,7 @@ const projectData = {
       title: "Technical Poster",
       desc: "Detailed analysis of stream health, land cover classification, and restoration metrics for technical audiences.",
       image: "images/project-1-tech-thumb.png",
-      link: "images/FCC_ElkCreek_technical_poster.jpg",
+      link: "images/FCC_ElkCreek_technical_poster.png",
       type: "lightbox"
     },
     {
