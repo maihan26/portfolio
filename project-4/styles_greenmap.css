@@ -1,0 +1,158 @@
+/* ── Basic Layout ───────────────────────────────────────────
+   Sets the page to fill the full viewport height with no default
+   margin. display:flex puts the panel and map side by side in a
+   single row — panel on the left, map filling the rest. */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+/* ── Left Panel ─────────────────────────────────────────────
+   Fixed-width sidebar that holds all controls.
+   display:flex with flex-direction:column stacks its children
+   vertically with a consistent gap between each section.
+   overflow-y:auto adds a scrollbar if the content is too tall. */
+#panel {
+  width: 260px;
+  background: #f4f4f4;
+  border-right: 1px solid #ccc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+/* Panel title — kept small so it doesn't dominate the sidebar */
+#panel h1 {
+  font-size: 1rem;
+  margin: 0 0 4px 0;
+}
+
+/* Panel subtitle — muted grey to distinguish from heading */
+#panel p {
+  font-size: 0.75rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Horizontal divider between sections in the panel.
+   border:none removes the default hr border so we can
+   control exactly which side has the line. */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0;
+}
+
+/* ── Section Headings ───────────────────────────────────────
+   Small uppercase labels used above each group of controls
+   (Navigation, Layers). Keeps the panel organised and scannable. */
+.section-title {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* ── Reset View Button ──────────────────────────────────────
+   Full-width blue button that stands out from the grey panel.
+   cursor:pointer changes the cursor to a hand on hover to signal
+   it is clickable. The actual reset logic is handled in app.js. */
+#resetBtn {
+  padding: 8px;
+  width: 100%;
+  background: #3388ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+/* Darker blue on hover to give visual feedback to the user */
+#resetBtn:hover {
+  background: #2266cc;
+}
+
+/* ── Layer Toggle Rows ──────────────────────────────────────
+   Each row holds a checkbox, a colour dot, and a label.
+   display:flex with align-items:center keeps them on the same
+   baseline regardless of the dot size. */
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+/* Colour swatch dot next to each layer label.
+   border-radius:50% makes a square div appear as a circle.
+   flex-shrink:0 prevents it from being squished in the flex row.
+   The actual background colour is set inline in index.html to
+   match each layer's map colour. */
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Status Bar ─────────────────────────────────────────────
+   Small italicised text at the bottom of the panel.
+   Updated dynamically by app.js to show loading progress
+   and feature counts once data has loaded. */
+#status {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* ── Map Container ──────────────────────────────────────────
+   flex:1 makes the map fill all remaining horizontal space
+   after the fixed-width panel. Leaflet renders into this div
+   and automatically resizes to match its dimensions. */
+#map {
+  flex: 1;
+}
+
+/* ── Popup Styles ───────────────────────────────────────────
+   These classes are used inside the HTML that app.js generates
+   via buildPopup() when a user clicks a map feature.
+   Leaflet injects that HTML into its popup container. */
+
+/* Bold layer name shown at the top of each popup */
+.popup-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+}
+
+/* Table that holds the attribute key-value rows.
+   border-collapse:collapse removes spacing between cells
+   so rows sit flush against each other. */
+.popup-table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+/* Field name column — muted and normal weight so the
+   value in <td> visually stands out as the important content */
+.popup-table th {
+  text-align: left;
+  color: #555;
+  font-weight: normal;
+  padding: 2px 6px 2px 0;
+}
+
+/* Field value column — bold so it reads clearly at small size */
+.popup-table td {
+  font-weight: bold;
+  padding: 2px 0;
+}

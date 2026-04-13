@@ -1,222 +1,147 @@
+// =========================================================
+// HOMEPAGE CONTENT
+// ---------------------------------------------------------
+// Edit this file to update the homepage content
+// =========================================================
 const siteData = {
   site: {
-    name: "Mai Han Nguyen",
-    title: "Mai Han Nguyen | Data Portfolio",
-    tagline: "Geospatial data for good",
-    description:
-      "One-page portfolio for Mai Han Nguyen, focused on geospatial analysis, sustainability, and data storytelling.",
+    title: "Han Nguyen | Geospatial Data for Good",
+    description: "Data portfolio for Han Nguyen, focused on geospatial analysis, sustainability, and data storytelling."
   },
 
+  // Main homepage navigation
   navigation: [
     { label: "Home", href: "index.html#banner" },
     { label: "About", href: "index.html#about" },
-    { label: "Services", href: "index.html#services" },
-    { label: "Portfolio", href: "portfolio.html", isCta: false },
-    { label: "Resume", href: "resume.html", isCta: true },
+    { label: "Portfolio", href: "index.html#portfolio" },
+    { label: "Resume", href: "resume.html" }
   ],
 
-  hero: { 
-  title: "Han Nguyen",
-  subtitle: "Geospatial Data for Good.<br>Remote Sensing and GIS for Social Impact.",
-  buttons: [
-    { label: "View Portfolio", href: "#portfolio", className: "button-1" },
-    { label: "Learn More", href: "#about", className: "button-2" },
-  ],
-},
+  // Hero content. Keep line breaks in subtitle with <br>.
+  hero: {
+    title: "Welcome! I'm Han Nguyen",
+    subtitle: "I turn geospatial data into measurable insights for good.",
+    buttons: [
+      { label: "View portfolio", href: "#portfolio", className: "button-1" },
+      { label: "Read more", href: "#about", className: "button-2" }
+    ]
+  },
 
+  // About section content
   about: {
-    subtitle: "About Han",
-    title: "Geospatial Data For Good",
+    subtitle: "About",
+    title: "Remote sensing and GIS for social impact",
     image: "images/about-portrait.jpg",
-    imageAlt: "About Han",
-    text:
-      "A grateful Earth Citizen. <br>Highly analytical and motivated professional with a background in data analytics, social impact consulting and recently acquired skills in Geospatial Data. <br> I care about using Remote Sensing and GIS to contribute to nature resource conservation and climate action.",
+    imageAlt: "Han Nguyen portfolio image",
+    text: "I work at the intersection of geospatial analysis, sustainability, and storytelling. My goal is to turn spatial data into insight that supports conservation, climate action, and better decisions.",
     highlights: [
-      "Geospatial data analytics, and visualization",
-      "Sustainability and Social Impact Consulting",
-      "Work experience in Vietnam, Sweden, and Maldives",
-      "Servant leadership practitioner and long-term volunteer",
+      "GIS, remote sensing, and data visualization",
+      "Research with social and environmental purpose",
+      "Experience across consulting, development, and analytics",
+      "Clear communication for technical and non-technical audiences"
     ],
-    readMoreLabel: "Read More",
+    readMoreLabel: "Read more",
     readMoreHref: "about.html",
-    resumeLabel: "View Resume",
-    resumeHref: "resume.html",
+    resumeLabel: "View resume",
+    resumeHref: "resume.html"
   },
 
-  services: {
-    subtitle: "Skills",
-    title: "What I Do",
-    items: [
-      {
-        icon: "images/icon-camera.png",
-        title: "Geospatial & Sustainability",
-        text:
-          "Use ArcGIS Pro, Google Earth Engine, Python, and sustainability-focused research to turn spatial data into practical insights.",
-        linkLabel: "See Projects",
-        linkHref: "portfolio.html",
-      },
-      {
-        icon: "images/icon-dashboard.png",
-        title: "Data Analysis",
-        text:
-          "Analyze, clean, and interpret data using Python Data Science libraries and SQL (MySQL and SQL Server).",
-        linkLabel: "See Projects",
-        linkHref: "portfolio.html",
-      },
-      {
-        icon: "images/icon-pencil.png",
-        title: "Data Visualization",
-        text:
-          "Create clear visuals and dashboards with Tableau, Power BI, PowerPoint, Plotly, Seaborn for story telling and reporting.",
-        linkLabel: "See Projects",
-        linkHref: "portfolio.html",
-      },
-    ],
-  },
-
+  // Portfolio section.
+  // 'filters' creates the top filter row.
+  // 'tags' are also shown as small labels on each project card.
   portfolio: {
     subtitle: "Portfolio",
-    title: "Latest Work",
+    title: "Selected projects",
+    filters: ["All", "Remote Sensing", "GIS", "Web mapping", "Research", "Cartography", "Machine Learning", "Deep Learning", "ArcGIS Pro", "ArcGIS Online", "StoryMap", "Field Maps", "Survey123", "Google Earth Engine", "Tableau", "Python", "SQL", "JavaScript", "HTML/CSS", "Leaflet", "Folium", "API"],
     items: [
       {
         thumb: "images/elk-creek-restoration.jpg",
-        full: "images/elk-creek-restoration.jpg",
-        alt: "Quantifying Restoration Outcomes at Elk Creek",
-        title: "Quantifying Restoration Outcomes at Elk Creek",
-        text:
-           "Community Service Learning project. Quantified stream restoration outcomes at Elk Creek using GIS and remote sensing",
-        meta: "Jan 2026 - on-going",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://canva.link/qfkxjexe5xiwgvx",
-          },
-        ],
-      },
-            {
-        thumb: "images/winter-olympics-analysis.jpg",
-        full: "images/winter-olympics-analysis.jpg",
-        alt: "Winter Olympics Medal Strategy Analysis",
-        title: "Gold Diggers:How to Win More Medals at the Winter Olympics",
-        text:
-           "Explored factors influencing Olympic medal success",
-        meta: "Mar 2026 - Mar 2026",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.canva.com/design/DAHC7QTNNk0/MaUNFZzcupEjqZTMORtmVg/edit",
-          },
-        ],
+        alt: "Elk Creek restoration project",
+        title: "Quantifying restoration outcomes at Elk Creek",
+        text: "A community service learning project for Freshwater Conservation Canada.",
+        href: "project-1.html",
+        tags: ["Remote Sensing", "GIS", "ArcGIS Online", "Python", "ArcGIS Pro", "Machine Learning", "Deep Learning", "Research", "StoryMap"]
       },
       {
-        thumb: "images/bee-project.webp",
-        full: "images/bee-project.webp",
-        alt: "Enhancing bee pollination of canola fields in Southern Alberta",
-        title: "Enhancing Bee Pollination of Canola Fields in Southern Alberta",
-        text:
-          "Capstone project using Excel, Python, and Tableau to support client recommendations for bee pollination in canola fields.",
-        meta: "Jan 2025 - Apr 2025",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/0",
-          },
-        ],
+        thumb: "images/SaddleLake.jpg",
+        alt: "GIS suitability analysis for solar farm siting",
+        title: "GIS Suitability Analysis for Solar Farm Siting",
+        text: "Integrated technical, legal, and economic constraints in a GIS workflow to identify potential sites for solar farm development in Saddle Lake.",
+        href: "project-2.html",
+        tags: ["GIS","Research", "Cartography", "ArcGIS Pro"]
+      },
+      {
+        thumb: "images/winter-olympics-analysis.jpg",
+        alt: "Winter Olympics strategy analysis",
+        title: "Gold Diggers: How to Win More Medals at the Winter Olympics",
+        text: "Explored national, sport, and athlete factors that correlate medal success at Winter Olympics.",
+        href: "project-3.html",
+        tags: ["Python", "Web Scraping", "Research"]
+      },
+            {
+        thumb: "images/Calgary_green_map.png",
+        alt: "Calgary Map",
+        title: "Calgary Parks & Trees Interactive Map",
+        text: "Exploring Calgary’s urban green infrastructure through an interactive web map.",
+        href: "project-4.html",
+        tags: ["GIS", "Web mapping", "Leaflet", "HTML/CSS", "JavaScript", "API"]
+      },
+      {
+        thumb: "images/Calgary_Transit_Grocery_map.png",
+        alt: "Interactive Transit Accessibility Map",
+        title: "Calgary Grocery Store Accessibility Interactive Map ",
+        text: "Interactive map visualizing transit access and nearby grocery stores in Calgary.",
+        href: "project-5.html",
+        tags: ["GIS", "Folium", "Python", "Web Mapping", "Accessibility"]
+      },
+      {
+        thumb: "images/Calgary_Urban_Expansion.png",
+        alt: "Urban expansion in Calgary from satellite imagery",
+        title: "Urban Trace: Calgary Expansion StoryMap",
+        text: "Combined Landsat imagery and Google Earth Engine analysis into a StoryMap to reveal 25 years of urban growth in Calgary.",
+        href: "project-6.html",
+        tags: ["Remote Sensing", "Google Earth Engine", "StoryMap"]
+      },
+      {
+        thumb: "images/Remote_Sensing_4Good.png",
+        alt: "Remote Sensing for Good StoryMap",
+        title: "Remote Sensing for Good",
+        text: "A StoryMap project using narrative structure, visual curation, and design choices to communicate remote sensing in an accessible way.",
+        href: "project-7.html",
+        tags: ["StoryMap", "Remote Sensing", "Design", "Geospatial Storytelling"]
       },
       {
         thumb: "images/call-volume-analysis.webp",
-        full: "images/call-volume-analysis.webp",
-        alt: "Service gap analysis and call volume forecasting for Distress Centre Calgary",
-        title: "Service Gap Analysis & Call Volume Forecasting for Distress Centre Calgary",
-        text:
-          "Volunteer analytics project using time-series analysis and forecasting to identify service gaps and support operations planning.",
-        meta: "Apr 2025 - May 2025",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/1",
-            primary: true,
-          },
-        ],
+        alt: "Call volume forecasting",
+        title: "Service gap analysis and call volume forecasting",
+        text: "Analytics report for planning, forecasting, and service insight. Dedicated to National Mental Health Datathon.",
+        href: "https://www.datascienceportfol.io/maihan/projects/1",
+        tags: ["Python", "Machine Learning"]
       },
-      {
-        thumb: "images/obesity-mngt.webp",
-        full: "images/obesity-mngt.webp",
-        alt: "Obesity management data mining project",
-        title: "Obesity Management Data Mining",
-        text:
-          "Course project applying clustering, classification, and visualization to predict obesity risk and identify high-risk population groups.",
-        meta: "Mar 2025 - Apr 2025",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/2",
-            primary: true,
-          },
-        ],
-      },
-      {
-        thumb: "images/hr-attrition.png",
-        full: "images/hr-attrition.png",
-        alt: "High employee turnover analysis dashboard project",
-        title: "High Employee Turnover Analysis",
-        text:
-          "Tableau-based analysis and dashboard exploring drivers of attrition and recommendations for senior management.",
-        meta: "Apr 2025",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/3",
-            primary: true,
-          },
-        ],
+            {
+        thumb: "images/bee-project.webp",
+        alt: "Bee pollination analysis",
+        title: "Bee pollination analysis for canola fields",
+        text: "Quantitative and desk research analysis to support client in improving bee health and productivity in Southern Alberta.",
+        href: "https://www.datascienceportfol.io/maihan/projects/0",
+        tags: ["Python", "Tableau", "Research"]
       },
       {
         thumb: "images/Sales-inventory-analysis.webp",
-        full: "images/Sales-inventory-analysis.webp",
-        alt: "Sales and inventory integration using SQL",
-        title: "Sales and Inventory Integration Using SQL",
-        text:
-          "SQL project integrating sales and inventory databases to answer business questions and support decision-making.",
-        meta: "Dec 2024",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/5",
-            primary: true,
-          },
-        ],
-      },
-      {
-        thumb: "images/spiritual-religion.webp",
-        full: "images/spiritual-religion.webp",
-        alt: "Religion and spirituality in East Asian societies analysis",
-        title: "Religion and Spirituality in East Asian Societies",
-        text:
-          "Python-based survey analysis testing hypotheses and drawing conclusions from Pew Research Center data across five East Asian societies.",
-        meta: "Mar 2025",
-        links: [
-          {
-            label: "Project Page",
-            href: "https://www.datascienceportfol.io/maihan/projects/4",
-            primary: true,
-          },
-        ],
-      },
-    ],
+        alt: "Sales and inventory SQL project",
+        title: "Sales and inventory integration using SQL",
+        text: "Database integration project to answer business questions with clean schema design and SQL queries.",
+        href: "https://www.datascienceportfol.io/maihan/projects/5",
+        tags: ["SQL"]
+      }
+    ]
   },
 
-footer: {
-  name: "Mai Han Nguyen",
-  tagline: "Geospatial Data for Good. Making the invisible visible through data.",
-  links: [
-
-    // 👇 ADD THIS
-    { 
-      label: "Connect on LinkedIn", 
-      href: "https://www.linkedin.com/in/maihannguyen/", 
-      icon: "linkedin" 
-    },
-  ],
-}
+  // Footer content
+  footer: {
+    tagline: "Geospatial data for good. Making the invisible visible through location-based insight.",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/maihannguyen/"}
+    ]
+  }
 };

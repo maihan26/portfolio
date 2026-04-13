@@ -1,125 +1,63 @@
-function renderBullets(items = []) {
-  if (!items.length) return "";
+// =========================================================
+// RESUME PAGE RENDERER
+// ---------------------------------------------------------
+// Reads resumeData from resume.js and builds the resume page.
+// =========================================================
+
+// Return a linked label if a URL exists. Otherwise return plain text.
+function maybeLink(label, url) {
+  if (!label) return '';
+  if (!url) return label;
+  return `<a href="${url}" class="title-link" target="_blank" rel="noopener noreferrer">${label}</a>`;
+}
+
+// Build one resume section card with multiple items inside.
+function renderResumeSection(section) {
   return `
-    <ul>
-      ${items.map(item => `<li>${item}</li>`).join("")}
-    </ul>
+    <section class="resume-block">
+      <h4>${section.sectionTitle}</h4>
+      ${section.items.map(item => `
+        <article class="resume-item">
+          <div class="resume-role">${item.title || ''}</div>
+
+          ${(item.org || item.orgUrl || item.year)
+            ? `<div class="resume-org">${maybeLink(item.org || '', item.orgUrl || '')}${item.year ? ` (${item.year})` : ''}</div>`
+            : ''}
+
+          ${item.period ? `<div class="resume-meta">${item.period}</div>` : ''}
+          ${item.location ? `<div class="resume-meta">${item.location}</div>` : ''}
+          ${item.text ? `<p>${item.text}</p>` : ''}
+          ${item.note ? `<p class="resume-note">${item.note}</p>` : ''}
+          ${item.image ? `<img src="${item.image}" class="resume-image" alt="${item.title}">` : ""}
+        </article>
+      `).join('')}
+    </section>
   `;
 }
 
-function renderHighlights(items = []) {
-  if (!items.length) return "";
+// Render the page header and both columns.
+function renderResumePage() {
+  document.title = resumeData.site.title;
 
-  return `
-    <div class="resume-highlights-grid">
-      ${items.map(item => `
-        <div class="resume-highlight-card">
-          <h5>${item.title || ""}</h5>
-          ${item.period ? `<div class="resume-meta">${item.period}</div>` : ""}
-          <p>${item.text || ""}</p>
-        </div>
-      `).join("")}
-    </div>
-  `;
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute('content', resumeData.site.description);
+  }
+
+  const subtitle = document.getElementById('resume-subtitle');
+  const title = document.getElementById('resume-title');
+  const summary = document.getElementById('resume-summary');
+  const leftColumn = document.getElementById('resume-left-column');
+  const rightColumn = document.getElementById('resume-right-column');
+
+  if (!subtitle || !title || !summary || !leftColumn || !rightColumn) return;
+
+  subtitle.textContent = resumeData.header.subtitle;
+  title.textContent = resumeData.header.title;
+  summary.textContent = resumeData.header.summary;
+
+  leftColumn.innerHTML = resumeData.leftColumn.map(renderResumeSection).join('');
+  rightColumn.innerHTML = resumeData.rightColumn.map(renderResumeSection).join('');
 }
 
-function renderEducation(items = []) {
-  if (!items.length) return "<p>No education added yet.</p>";
-
-  return items.map(item => `
-    <div class="resume-item">
-      <div class="resume-role-line">${item.degree || ""}</div>
-      <div class="resume-org-line">${item.school || ""}${item.location ? ` • ${item.location}` : ""}</div>
-      <div class="resume-meta">${item.period || ""}</div>
-      <p>${item.details || ""}</p>
-    </div>
-  `).join("");
-}
-
-function renderExperience(items = []) {
-  if (!items.length) return "<p>No experience added yet.</p>";
-
-  return items.map(item => `
-    <div class="resume-item">
-      <div class="resume-role-line">${item.role || ""}</div>
-      <div class="resume-org-line">${item.company || ""}${item.location ? ` • ${item.location}` : ""}</div>
-      <div class="resume-meta">${item.period || ""}</div>
-      ${Array.isArray(item.details) ? renderBullets(item.details) : `<p>${item.details || ""}</p>`}
-    </div>
-  `).join("");
-}
-
-function renderTextBlocks(items = []) {
-  if (!items.length) return ""; 
-
-  return items.map(item => `
-    <div class="resume-item">
-      <div class="resume-role-line">${item.title || ""}</div>
-      ${item.period ? `<div class="resume-meta">${item.period}</div>` : ""}
-      <p>${item.text || ""}</p>
-    </div>
-  `).join("");
-}
-
-function renderResumePage(data) {
-  const root = document.getElementById("resume-page");
-  if (!root || !data) return;
-
- root.innerHTML = `
-    <div class="resume-stack">
-<section class="text-section">
-  <div class="wrapper">
-    <div class="resume-intro-card">
-      <p class="subtitle">${data.subtitle}</p>
-            ${
-              data.download
-                ? `<div class="buttons">
-                    <a href="${data.download.href}" class="button-1">${data.download.label}</a>
-                   </div>`
-                : ""
-            }
-          </div>
-        </div>
-      </section>
-
-      <section class="text-section">
-        <div class="wrapper">
-          <div class="resume-section-card">
-
-
-        </div>
-      </section>
-
-      <section class="text-section">
-        <div class="wrapper">
-          <div class="resume-section-card">
-
-            <h4>Education</h4>
-            ${renderEducation(data.education)}
-          </div>
-        </div>
-      </section>
-
-      <section class="text-section">
-        <div class="wrapper">
-          <div class="resume-section-card">
-
-            <h4>Experience</h4>
-            ${renderExperience(data.experience)}
-          </div>
-        </div>
-      </section>
-
-      <section class="text-section">
-        <div class="wrapper">
-          <div class="resume-section-card">
-
-        </div>
-      </section>
-    </div>
-  `;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderResumePage(resumeData);
-});
+document.addEventListener('DOMContentLoaded', renderResumePage);

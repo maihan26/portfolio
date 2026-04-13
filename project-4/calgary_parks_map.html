@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calgary Parks & Trees Map</title>
+
+  <!-- Leaflet CSS — provides default map and popup styles from CDN.
+       Must be loaded before styles.css so our rules can override it. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+
+  <!-- Leaflet JS — the mapping library that creates the map,
+       draws GeoJSON layers, and handles popups and markers.
+       Loaded in <head> so it is available before app.js runs. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <!-- Our custom stylesheet — controls the panel layout, buttons,
+       checkboxes, and popup table appearance (separation of concerns:
+       styles live here, not inside app.js or inline on elements). -->
+  <link rel="stylesheet" href="styles_greenmap.css"/>
+</head>
+<body>
+
+<!-- ── Left Panel ───────────────────────────────────────────
+     The sidebar on the left side of the page.
+     Contains the page title, navigation controls, layer toggles,
+     and a status bar. All interactive elements here have IDs so
+     app.js can attach event listeners to them. -->
+<div id="panel">
+
+  <!-- Page title and data source info -->
+  <div>
+    <h1>Calgary Parks & Trees</h1>
+    <p>Data from Calgary Open Data Portal</p>
+  </div>
+
+  <hr/>
+
+  <!-- Reset View button — the id="resetBtn" is targeted by app.js
+       to snap the map back to the default Calgary center and zoom -->
+  <div>
+    <div class="section-title">Navigation</div>
+    <button id="resetBtn">⟳ Reset View</button>
+  </div>
+
+  <hr/>
+
+  <!-- Layer Toggles — each checkbox has a unique id (cb-parks, cb-trees)
+       that app.js uses to listen for changes and show/hide the matching layer.
+       The legend-dot span provides a colour swatch matching each layer's style.
+       checked means the layer is visible by default when the page loads. -->
+  <div>
+    <div class="section-title">Layers</div>
+
+    <!-- Parks checkbox — controls the green polygon layer -->
+    <div class="layer-row">
+      <input type="checkbox" id="cb-parks" checked/>
+      <span class="legend-dot" style="background:green; opacity:0.5;"></span>
+      <label for="cb-parks">Parks Sites</label>
+    </div>
+
+    <!-- Trees checkbox — controls the brown circle marker layer -->
+    <div class="layer-row">
+      <input type="checkbox" id="cb-trees" checked/>
+      <span class="legend-dot" style="background:#8B4513;"></span>
+      <label for="cb-trees">Public Trees</label>
+    </div>
+
+  </div>
+
+  <hr/>
+
+  <!-- Status bar — updated dynamically by app.js to show loading
+       progress and feature counts as data arrives from the API -->
+  <div id="status">Loading data…</div>
+
+</div>
+
+<!-- ── Map Container ─────────────────────────────────────────
+     The empty div that Leaflet targets to render the map into.
+     Leaflet replaces the contents of this div with the map canvas.
+     Its size is controlled by #map in styles.css (flex: 1). -->
+<div id="map"></div>
+
+<!-- ── JavaScript ────────────────────────────────────────────
+     app.js is loaded at the bottom of <body> so the HTML elements
+     above (panel, buttons, checkboxes, map div) exist in the DOM
+     before the script tries to access them. -->
+<script src="app.js"></script>
+</body>
+</html>
